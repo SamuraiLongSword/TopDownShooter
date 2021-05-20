@@ -22,13 +22,25 @@ public class CameraFollow : MonoBehaviour
 
     private void LateUpdate()
     {
+        CameraMovement();
+    }
+
+    private void CameraMovement()
+    {
         Vector3 target = new Vector3(Player.position.x, Player.position.y, transform.position.z);
 
+        target = CameraCheckBounds(target);
+
+        transform.position = Vector3.SmoothDamp(transform.position, target, ref _velosity, _smoothTime);
+    }
+
+    private Vector3 CameraCheckBounds(Vector3 target)
+    {
         if (target.x > _camMaxX) target.x = _camMaxX;
         if (target.x < _camMinX) target.x = _camMinX;
         if (target.y > _camMaxY) target.y = _camMaxY;
         if (target.y < _camMinY) target.y = _camMinY;
 
-        transform.position = Vector3.SmoothDamp(transform.position, target, ref _velosity, _smoothTime);
+        return target;
     }
 }
