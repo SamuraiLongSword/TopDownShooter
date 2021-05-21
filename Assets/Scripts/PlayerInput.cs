@@ -20,6 +20,6 @@ public class PlayerInput : MonoBehaviour
 
         MouseLeft = Input.GetButton("Fire1");
 
-        R = Input.GetKey(KeyCode.R);
+        R = Input.GetKeyDown(KeyCode.R);
     }
 }
