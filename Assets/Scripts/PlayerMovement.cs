@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement S;
+
     [SerializeField] private float Speed;
 
     private PlayerInput _pInput;
 
     private void Awake()
     {
+        if (S == null) S = this;
+
         _pInput = GetComponent<PlayerInput>();
     }
 

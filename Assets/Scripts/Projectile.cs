@@ -3,9 +3,16 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] private float ProjectileSpeed;
+
     void Update()
     {
-        transform.Translate(-Time.deltaTime * 5, 0, 0);
+        ProjectileMovement();
+    }
+
+    private void ProjectileMovement()
+    {
+        transform.Translate(Time.deltaTime * ProjectileSpeed, 0, 0);
 
         StartCoroutine(Delite());
     }

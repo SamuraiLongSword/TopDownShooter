@@ -20,11 +20,12 @@ public class PlayerRotateGun : MonoBehaviour
 
     private void RotateLogic()
     {
-        Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(_pInput.MousePosition); // Get the World position of the mouse
-
-        float angle = AngleBetweenTwoPoints(Gun.position, mouseWorldPosition); //Get the angle between the gun and the mouse
-
-        Gun.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle)); // Rotate the gun towards the mouse
+        // Get the World position of the mouse
+        Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(_pInput.MousePosition);
+        //Get the angle between the gun and the mouse
+        float angle = AngleBetweenTwoPoints(Gun.position, mouseWorldPosition);
+        // Rotate the gun towards the mouse
+        Gun.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
     }
 
     float AngleBetweenTwoPoints(Vector3 a, Vector3 b)

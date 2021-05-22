@@ -1,15 +1,19 @@
 using UnityEngine;
-[RequireComponent(typeof(Animator))]
+
 [RequireComponent(typeof(PlayerInput))]
 
 public class PlayerAnimation : MonoBehaviour
 {
+    [SerializeField] private GameObject PlayerAnimationGO;
+
     private Animator _playerAnimator;
+    private SpriteRenderer _sRenderer;
     private PlayerInput _pInput;
 
     private void Awake()
     {
-        _playerAnimator = GetComponent<Animator>();
+        _playerAnimator = PlayerAnimationGO.GetComponent<Animator>();
+        _sRenderer = PlayerAnimationGO.GetComponent<SpriteRenderer>();
         _pInput = GetComponent<PlayerInput>();
     }
 
@@ -22,8 +26,8 @@ public class PlayerAnimation : MonoBehaviour
     {
         if (!Mathf.Approximately(_pInput.Horizontal, 0) || !Mathf.Approximately(_pInput.Vertical, 0))
         {
-            Vector3 localScale = transform.localScale;
-            transform.localScale = new Vector3(Mathf.Sign(_pInput.Horizontal) * Mathf.Abs(localScale.x), localScale.y, localScale.z);
+            if (_pInput.Horizontal >= 0) _sRenderer.flipX = false;
+            else _sRenderer.flipX = true;
 
             _playerAnimator.SetBool("IsMoving", true);
         }
