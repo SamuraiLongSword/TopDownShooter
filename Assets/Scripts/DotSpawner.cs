@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class DotSpawner : MonoBehaviour
@@ -15,28 +14,25 @@ public class DotSpawner : MonoBehaviour
     private int _counterU = 0;
     private int _counterZ = 0;
 
-    private int _maxDotSpawnAmount = 5;
+    private int _maxDotSpawnAmount = 3;
 
     private float[] _coordsArr = { -9.5f, 0, 9.5f };
     private int _waveCounter = 0;
     private bool _isWaveActive = false;
     private GameObject _currentDot1;
     private GameObject _currentDot2;
+    private GameObject _currentDot3;
 
     private void Start()
     {
         _currentDot1 = null;
         _currentDot2 = null;
+        _currentDot3 = null;
     }
 
     private void Update()
     {
         WaveActivator();
-
-        if(_counterT % 5 == 0 && _currentDot1 == null && _counterT != T)
-        {
-            FirstWave();
-        }
     }
 
     private void WaveActivator()
@@ -48,12 +44,13 @@ public class DotSpawner : MonoBehaviour
                 case 0:
                     _waveCounter++;
                     _isWaveActive = true;
-                    FirstWave();
+                    Invoke("FirstWave", 5);
                     break;
                 case 1:
                     _waveCounter++;
                     _isWaveActive = true;
-                    SecondWave();
+                    Invoke("FirstWave", 20);
+                    Invoke("SecondWave", 20);
                     break;
                 case 2:
                     _waveCounter++;
@@ -67,25 +64,74 @@ public class DotSpawner : MonoBehaviour
     {
         Vector2 point = new Vector2(_coordsArr[Random.Range(0, _coordsArr.Length)], _coordsArr[Random.Range(0, _coordsArr.Length)]);
         _currentDot1 = Instantiate(DotEnemy1Prefab, point, Quaternion.identity);
-        _currentDot1.GetComponent<Spawner>().OnSpawn += HandlerSpawn;
+        _currentDot1.GetComponent<Spawner>().OnSpawn += HandlerSpawnFirstEnemy;
     }
 
     private void SecondWave()
     {
-        _isWaveActive = false;
-
-        if (_counterU == U && _counterZ == Z) _isWaveActive = false;
+        Vector2 point = new Vector2(_coordsArr[Random.Range(0, _coordsArr.Length)], _coordsArr[Random.Range(0, _coordsArr.Length)]);
+        _currentDot2 = Instantiate(DotEnemy2Prefab, point, Quaternion.identity);
+        _currentDot2.GetComponent<Spawner>().OnSpawn += HandlerSpawnSecondEnemy;
     }
 
     private void ThirdWave()
     {
-        Instantiate(DotBossPrefab, Vector2.zero, Quaternion.identity);
+        _currentDot3 = Instantiate(DotBossPrefab, Vector2.zero, Quaternion.identity);
+        _currentDot3.GetComponent<Spawner>().OnSpawn += HandleSpawnBoss;
     }
 
-    private void HandlerSpawn()
+    private void HandlerSpawnFirstEnemy()
     {
-        _counterT++;
+        switch (_waveCounter)
+        {
+            case 1:
+                HandleFirstWaveFirstEnemy();
+                break;
+            case 2:
+                HandleSecondtWaveFirstEnemy();
+                break;
+        }
+    }
 
-        if (_counterT == T) _isWaveActive = false;
+    private void HandleFirstWaveFirstEnemy()
+    {
+        EnemyController(ref _counterT, _maxDotSpawnAmount, T, _currentDot1, "FirstWave");
+
+        if (_counterT >= T) _isWaveActive = false;
+    }
+
+    private void HandleSecondtWaveFirstEnemy()
+    {
+        EnemyController(ref _counterU, _maxDotSpawnAmount, U, _currentDot1, "FirstWave");
+
+        if (_counterU >= U && _counterZ >= Z) _isWaveActive = false;
+    }
+
+    private void HandlerSpawnSecondEnemy()
+    {
+        EnemyController(ref _counterZ, _maxDotSpawnAmount, Z, _currentDot2, "SecondWave");
+
+        if (_counterU >= U && _counterZ >= Z) _isWaveActive = false;
+    }
+
+    private void HandleSpawnBoss()
+    {
+        Destroy(_currentDot3);
+    }
+
+    private void EnemyController(ref int counter, int maxDotAmount, int maxCounterAmount, GameObject currentDot, string waveName)
+    {
+        counter++;
+
+        if (counter % maxDotAmount == 0)
+        {
+            Destroy(currentDot);
+            Invoke(waveName, 0);
+        }
+
+        if (counter >= maxCounterAmount)
+        {
+            Destroy(currentDot);
+        }
     }
 }

@@ -21,8 +21,11 @@ public class EnemyMovement : MonoBehaviour
     {
         if (_isAlive)
         {
-            Vector2 direction = Vector2.MoveTowards(transform.position, _player.transform.position, 0.25f * Time.deltaTime * Speed);
-            transform.position = direction;
+            if(Vector2.Distance(transform.position, _player.transform.position) > 1.5f)
+            {
+                Vector2 direction = Vector2.MoveTowards(transform.position, _player.transform.position, 0.25f * Time.deltaTime * Speed);
+                transform.position = direction;
+            }
         }
     }
 
