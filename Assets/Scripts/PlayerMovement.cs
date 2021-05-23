@@ -17,10 +17,7 @@ public class PlayerMovement : MonoBehaviour
         _pInput = GetComponent<PlayerInput>();
     }
 
-    private void Update()
-    {
-        Movement();
-    }
+    private void Update() => Movement();
 
     private void Movement()
     {

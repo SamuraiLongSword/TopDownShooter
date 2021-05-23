@@ -13,10 +13,7 @@ public class Launcher : MonoBehaviour
         _launchTimer = 0;
     }
 
-    private void Update()
-    {
-        LaunchLogic();
-    }
+    private void Update() => LaunchLogic();
 
     private void LaunchLogic()
     {
@@ -40,8 +37,5 @@ public class Launcher : MonoBehaviour
         }
     }
 
-    private bool CanLaunch()
-    {
-        return _launchTimer >= LaunchRate;
-    }
+    private bool CanLaunch() => _launchTimer >= LaunchRate;
 }

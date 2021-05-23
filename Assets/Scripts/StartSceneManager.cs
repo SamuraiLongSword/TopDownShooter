@@ -3,13 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class StartSceneManager : MonoBehaviour
 {
-    public void StartGame()
-    {
-        SceneManager.LoadScene("_Level_Scene");
-    }
+    public void StartGame() => SceneManager.LoadScene("_Level_Scene");
 
-    public void QuiteGame()
-    {
-        Application.Quit();
-    }
+    public void QuiteGame() => Application.Quit();
 }

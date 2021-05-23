@@ -8,15 +8,9 @@ public class PlayerRotateGun : MonoBehaviour
 
     private PlayerInput _pInput;
 
-    private void Awake()
-    {
-        _pInput = GetComponent<PlayerInput>();
-    }
+    private void Awake() => _pInput = GetComponent<PlayerInput>();
 
-    private void Update()
-    {
-        RotateLogic();
-    }
+    private void Update() => RotateLogic();
 
     private void RotateLogic()
     {
@@ -28,8 +22,5 @@ public class PlayerRotateGun : MonoBehaviour
         Gun.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
     }
 
-    float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
-    {
-        return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
-    }
+    float AngleBetweenTwoPoints(Vector3 a, Vector3 b) => Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
 }

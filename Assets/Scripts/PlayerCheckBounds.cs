@@ -10,10 +10,7 @@ public class PlayerCheckBounds : MonoBehaviour
         _xMin = _yMin = -9.5f;
     }
 
-    void LateUpdate()
-    {
-        LimitPosition();
-    }
+    void LateUpdate() => LimitPosition();
 
     private void LimitPosition()
     {
