@@ -4614,9 +4614,9 @@ MonoBehaviour:
   DotEnemy1Prefab: {fileID: 7096745893364046267, guid: 8ed6b725823ee0c4386330466caa4045, type: 3}
   DotEnemy2Prefab: {fileID: 3230287949573010539, guid: 58dd5def0d8260743b5e79e16879fa26, type: 3}
   DotBossPrefab: {fileID: 5175168266920339632, guid: 138c046057eb861429c21d88a74a9009, type: 3}
-  T: 50
-  U: 75
-  Z: 99
+  T: 100
+  U: 150
+  Z: 75
 --- !u!1 &1428097987
 GameObject:
   m_ObjectHideFlags: 0

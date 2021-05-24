@@ -97,21 +97,21 @@ public class DotSpawner : MonoBehaviour
     {
         EnemyController(ref _counterT, _maxDotSpawnAmount, T, _currentDot1, "FirstWave");
 
-        if (_counterT >= T) _isWaveActive = false;
+        if (_counterT == T) _isWaveActive = false;
     }
 
     private void HandleSecondtWaveFirstEnemy()
     {
         EnemyController(ref _counterU, _maxDotSpawnAmount, U, _currentDot1, "FirstWave");
 
-        if (_counterU >= U && _counterZ >= Z) _isWaveActive = false;
+        if (_counterU == U && _counterZ == Z) _isWaveActive = false;
     }
 
     private void HandlerSpawnSecondEnemy()
     {
         EnemyController(ref _counterZ, _maxDotSpawnAmount, Z, _currentDot2, "SecondWave");
 
-        if (_counterU >= U && _counterZ >= Z) _isWaveActive = false;
+        if (_counterU == U && _counterZ == Z) _isWaveActive = false;
     }
 
     private void HandleSpawnBoss()
@@ -126,10 +126,10 @@ public class DotSpawner : MonoBehaviour
         if (counter % maxDotAmount == 0)
         {
             Destroy(currentDot);
-            Invoke(waveName, 0);
+            if(counter != maxCounterAmount) Invoke(waveName, 0);
         }
 
-        if (counter >= maxCounterAmount)
+        if (counter == maxCounterAmount)
         {
             Destroy(currentDot);
         }
