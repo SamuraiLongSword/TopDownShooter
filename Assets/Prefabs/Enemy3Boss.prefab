@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5334034978008129545}
   - component: {fileID: 3964865973991302807}
   m_Layer: 8
-  m_Name: Boss
+  m_Name: Enemy3Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8e7360d8a58a9249af087ae873dd5e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PointsForKill: 2500
   Scale: 3
   SRenderer: {fileID: 5334034978261515453}
 --- !u!114 &5334034978008129546

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class EnemyForm : MonoBehaviour
 {
+    [SerializeField] private int PointsForKill;
     [SerializeField] private float Scale;
     [SerializeField] private SpriteRenderer SRenderer;
 
@@ -31,14 +32,15 @@ public class EnemyForm : MonoBehaviour
 
     private void HandlerDie()
     {
-        _animator.SetTrigger("ShotDown");
-
         StartCoroutine(Delete());
-
     }
 
     private IEnumerator Delete()
     {
+        PointCounter.S.MaxPoints = PointsForKill;
+        Debug.Log("Max:" + PointCounter.S.MaxPoints + "/Curr:" + PointCounter.S.CurrentPoints);
+
+        _animator.SetTrigger("ShotDown");
         SRenderer.sortingOrder = 0;
         GetComponent<Collider2D>().enabled = false;
 

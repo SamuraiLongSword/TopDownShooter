@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8e7360d8a58a9249af087ae873dd5e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PointsForKill: 100
   Scale: 2
   SRenderer: {fileID: 7635865133750712575}
 --- !u!114 &7635865133714060420
