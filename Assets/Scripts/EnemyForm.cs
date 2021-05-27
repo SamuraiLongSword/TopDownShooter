@@ -30,10 +30,7 @@ public class EnemyForm : MonoBehaviour
         _previousPos = transform.position;
     }
 
-    private void HandlerDie()
-    {
-        StartCoroutine(Delete());
-    }
+    private void HandlerDie() => StartCoroutine(Delete());
 
     private IEnumerator Delete()
     {

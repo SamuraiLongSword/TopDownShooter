@@ -7,6 +7,7 @@ public class PlayerInput : MonoBehaviour
     public Vector2 MousePosition { get; private set; }
     public bool MouseLeft { get; private set; }
     public bool R { get; private set; }
+    public bool Q { get; private set; }
 
     private void Update()
     {
@@ -15,5 +16,6 @@ public class PlayerInput : MonoBehaviour
         MousePosition = Input.mousePosition;
         MouseLeft = Input.GetButton("Fire1");
         R = Input.GetKeyDown(KeyCode.R);
+        Q = Input.GetKeyDown(KeyCode.Q);
     }
 }

@@ -28,7 +28,7 @@ public class Launcher : MonoBehaviour
 
     protected void LaunchLogic(PlayerInput pInput)
     {
-        _launchTimer += Time.deltaTime;
+        _launchTimer += Time.deltaTime;        
 
         if (CanLaunch() && pInput.MouseLeft)
         {

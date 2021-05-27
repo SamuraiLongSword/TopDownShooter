@@ -22,7 +22,17 @@ public class PointCounter : MonoBehaviour
     public int CurrentPoints
     {
         get { return _currnetPoints; }
-        set { _currnetPoints = value; }
+        set
+        {
+            if(_currnetPoints >= value)
+            {
+                _currnetPoints = value;
+            }
+            else
+            {
+                // Send message 'not enough money' or something like that
+            }
+        }
     }
 
     public int MobCounter
