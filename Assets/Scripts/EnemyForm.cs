@@ -40,6 +40,8 @@ public class EnemyForm : MonoBehaviour
         _animator.SetTrigger("ShotDown");
         SRenderer.sortingOrder = 0;
         GetComponent<Collider2D>().enabled = false;
+        Destroy(GetComponent<DamageDeal>());
+        Destroy(GetComponent<Launcher>());
 
         yield return new WaitForSeconds(10);
 

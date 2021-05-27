@@ -81,6 +81,6 @@ public class BulletHolder : MonoBehaviour
 
     public void TMPShowText()
     {
-        txt.text = "Curr: " + _currentClipAmount + "\nClipCur: " + _clipCurrentBulletCount + "\nPoints: " + PointCounter.S.CurrentPoints;
+        txt.text = "Curr: " + _currentClipAmount + "\nClipCur: " + _clipCurrentBulletCount + "\nPoints: " + PointCounter.S.CurrentPoints + "\nHP:" + GetComponentInParent<HealthController>().CurrentHealth;
     }
 }
