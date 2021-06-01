@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1fd83c428575746bdf5612bfdb773a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSpawnAmount: 10
+  MaxSpawnAmount: 100
   DotEnemyPrefab: {fileID: 6153372915808429423, guid: 3b9b2eb9465f545458824f2e6bc2c456, type: 3}
   NextWavePrefab: {fileID: 6856646649188599990, guid: f3f375ba4430c9b4589d436869ccbe02, type: 3}
   Centered: 0

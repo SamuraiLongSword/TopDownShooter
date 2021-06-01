@@ -27,6 +27,7 @@ public class HealthController : MonoBehaviour
 
         if(_currentHealth <= 0)
         {
+            _currentHealth = 0;
             OnDie();
         }
     }

@@ -31,6 +31,9 @@ public class BulletHolder : MonoBehaviour
 
     public event Action OnOutOfClips = delegate { };
     public event Action OnBuyClip = delegate { };
+    public event Action OnFullClip = delegate { };
+
+    public event Action OnOutOfMoney = delegate { };
 
     private void Awake()
     {
@@ -92,8 +95,16 @@ public class BulletHolder : MonoBehaviour
 
     private void BuyBullets()
     {
-        if (_pInput.F && PointCounter.S.CurrentPoints >= _pointsForBuyClip && _currentClipAmount < _maxClipAmount && _canBuy)
+        if (PointCounter.S.CurrentPoints < _pointsForBuyClip && _canBuy && _pInput.F) OnOutOfMoney();
+
+        if (_pInput.F && PointCounter.S.CurrentPoints >= _pointsForBuyClip && _currentClipAmount <= _maxClipAmount && _canBuy)
         {
+            if(_currentClipAmount == _maxClipAmount)
+            {
+                OnFullClip();
+                return;
+            }
+
             OnBuyClip();
             _currentClipAmount++;
             PointCounter.S.CurrentPoints -= _pointsForBuyClip;

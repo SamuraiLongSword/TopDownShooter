@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1fd83c428575746bdf5612bfdb773a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSpawnAmount: 15
+  MaxSpawnAmount: 150
   DotEnemyPrefab: {fileID: 6153372915808429423, guid: 3b9b2eb9465f545458824f2e6bc2c456, type: 3}
   NextWavePrefab: {fileID: 4022773140930312526, guid: 89a5285eb9088c74884901ba18ece84d, type: 3}
   Centered: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1fd83c428575746bdf5612bfdb773a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSpawnAmount: 7
+  MaxSpawnAmount: 75
   DotEnemyPrefab: {fileID: 5177183223783204015, guid: 2514077b2ecbfb24cacc73f2d12d3d00, type: 3}
   NextWavePrefab: {fileID: 4022773140930312526, guid: 89a5285eb9088c74884901ba18ece84d, type: 3}
   Centered: 0

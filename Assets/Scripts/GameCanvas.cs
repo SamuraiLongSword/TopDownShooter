@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,6 +30,8 @@ public class GameCanvas : MonoBehaviour
 
         _bullets.OnOutOfClips += HandlerOutOfClips;
         _bullets.OnBuyClip += HandlerBuyClip;
+        _bullets.OnFullClip += HandlerFullClip;
+        _bullets.OnOutOfMoney += HandlerOutOfMoney;
 
         _rechargeDot = null;
 
@@ -69,11 +72,30 @@ public class GameCanvas : MonoBehaviour
         OutOfClipsMessage.SetActive(false);
     }
 
+    private void HandlerFullClip()
+    {
+        StartCoroutine(FullClipMessage(LimitOfClipsMessage));
+    }
+
+    private void HandlerOutOfMoney()
+    {
+        StartCoroutine(FullClipMessage(NotEnoughPointsMessage));
+    }
+
+    private IEnumerator FullClipMessage(GameObject panel)
+    {
+        panel.SetActive(true);
+
+        yield return new WaitForSeconds(2);
+
+        panel.SetActive(false);
+    }
+
     private void RotateArrowLogic()
     {
-        _rechargeDot = GameObject.FindGameObjectWithTag("RechargeDot");
+        if(_rechargeDot == null) _rechargeDot = GameObject.FindGameObjectWithTag("RechargeDot");
 
-        if(_rechargeDot != null)
+        if(_rechargeDot != null && Player!= null)
         {
             ArrowToShow.SetActive(true);
             float angle = AngleBetweenTwoPoints(Player.transform.position, _rechargeDot.transform.position);
