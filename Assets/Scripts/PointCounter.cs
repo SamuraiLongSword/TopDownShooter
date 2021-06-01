@@ -24,7 +24,7 @@ public class PointCounter : MonoBehaviour
         get { return _currnetPoints; }
         set
         {
-            if(_currnetPoints >= value)
+            if (_currnetPoints >= value)
             {
                 _currnetPoints = value;
             }

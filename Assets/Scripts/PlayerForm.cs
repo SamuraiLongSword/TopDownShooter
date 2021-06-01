@@ -13,7 +13,10 @@ public class PlayerForm : MonoBehaviour
         _sRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
-    private void HandlerDie() => Destroy(gameObject);
+    private void HandlerDie()
+    {
+        Destroy(gameObject);
+    }
 
     private void HandlerHit() => StartCoroutine(Hit());
 

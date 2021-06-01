@@ -47,4 +47,3 @@ MonoBehaviour:
   DotEnemyPrefab: {fileID: 2015638348189161826, guid: 0b42b7aa51d797d4ba6148c2cbf51c08, type: 3}
   NextWavePrefab: {fileID: 0}
   Centered: 1
-  Destroyable: 1

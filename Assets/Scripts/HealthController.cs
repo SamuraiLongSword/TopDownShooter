@@ -20,18 +20,6 @@ public class HealthController : MonoBehaviour
 
     private void Start() => _currentHealth = MaxHealth;
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if(collision.gameObject.CompareTag("Projectile") || gameObject.CompareTag("Player"))
-    //    {
-    //        var enemy = collision.gameObject.GetComponent<DamageDeal>();
-    //        if (enemy != null)
-    //        {
-    //            TakeDamage(enemy.DamageToDeal);
-    //        }
-    //    }
-    //}
-
     private void TakeDamage(float damage)
     {
         OnHit();

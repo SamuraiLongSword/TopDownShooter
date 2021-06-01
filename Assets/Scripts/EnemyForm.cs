@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,6 +7,9 @@ public class EnemyForm : MonoBehaviour
     [SerializeField] private int PointsForKill;
     [SerializeField] private float Scale;
     [SerializeField] private SpriteRenderer SRenderer;
+    [SerializeField] private AudioSource DeathSound;
+
+    public event Action OnWin = delegate { };
 
     private Vector3 _previousPos;
     private Animator _animator;
@@ -35,8 +39,10 @@ public class EnemyForm : MonoBehaviour
     private IEnumerator Delete()
     {
         PointCounter.S.MaxPoints = PointsForKill;
-        Debug.Log("Max:" + PointCounter.S.MaxPoints + "/Curr:" + PointCounter.S.CurrentPoints);
 
+        if (gameObject.tag == "Boss") OnWin();
+
+        DeathSound.Play();
         _animator.SetTrigger("ShotDown");
         SRenderer.sortingOrder = 0;
         GetComponent<Collider2D>().enabled = false;

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 enum IsCentered { No, Yes}
 
@@ -9,20 +10,22 @@ public class Wave : MonoBehaviour
     [SerializeField] private GameObject NextWavePrefab;
     [SerializeField] private IsCentered Centered;
 
-    private static int _totalSpawnAmount = 0;
+    public static int TotalSpawnAmount;
 
     private int _maxDotSpawnAmount = 2;
     private Vector2[] _pointsToSpawn = { new Vector2(-9.5f, 9.5f),  new Vector2(0, 9.5f), new Vector2(9.5f, 9.5f),
                                          new Vector2(-9.5f, 0),                           new Vector2(9.5f, 0),
                                          new Vector2(-9.5f, -9.5f), new Vector2(0, -9.5f),new Vector2(9.5f, -9.5f) };
+
     private GameObject _currentDot;
     private int _enemyCounter;
 
-    private void Awake()
+    private void Start()
     {
-        _totalSpawnAmount += MaxSpawnAmount;
+        SceneManager.sceneLoaded += HandlerSceneLoaded;
+        TotalSpawnAmount += MaxSpawnAmount;
         _enemyCounter = 0;
-        Invoke("WaveLogic", 15);
+        Invoke("WaveLogic", 10);
     }
 
     private void Update()
@@ -30,9 +33,14 @@ public class Wave : MonoBehaviour
         EndWaveCheck();
     }
 
+    private void HandlerSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        TotalSpawnAmount = 0;
+    }
+
     private void EndWaveCheck()
     {
-        if (PointCounter.S.MobCounter == _totalSpawnAmount)
+        if (PointCounter.S.MobCounter == TotalSpawnAmount)
         {
             if(NextWavePrefab != null) Instantiate(NextWavePrefab);
             Destroy(gameObject);

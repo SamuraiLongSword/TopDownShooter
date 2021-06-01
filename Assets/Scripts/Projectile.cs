@@ -6,7 +6,10 @@ public class Projectile : MonoBehaviour
 
     void Update() => ProjectileMovement();
 
-    private void ProjectileMovement() => transform.Translate(Time.deltaTime * ProjectileSpeed, 0, 0);
+    private void ProjectileMovement()
+    {
+        transform.Translate(Time.deltaTime * ProjectileSpeed, 0, 0);
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

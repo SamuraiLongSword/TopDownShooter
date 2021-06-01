@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 271321400818494514}
   m_Layer: 10
   m_Name: RechargeDot
-  m_TagString: Untagged
+  m_TagString: RechargeDot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
