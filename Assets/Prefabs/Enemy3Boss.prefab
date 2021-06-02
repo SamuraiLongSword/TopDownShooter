@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: -1027057414420855515}
   - component: {fileID: 6053585049384672541}
   - component: {fileID: 307758642386787874}
+  - component: {fileID: 1967389878215105167}
   m_Layer: 8
   m_Name: Enemy3Boss
   m_TagString: Boss
@@ -95,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bcb3b152749fd646b29732a79538ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 555
+  MaxHealth: 333
 --- !u!58 &5334034978008129549
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -350,6 +351,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1967389878215105167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5334034978008129542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38e8032b53bc5a64f83795c9d6eb3609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExplosivePrefab: {fileID: 751633975549794320, guid: bbb64788917909a45a59631ed05c2933, type: 3}
 --- !u!1 &5334034978261515450
 GameObject:
   m_ObjectHideFlags: 0

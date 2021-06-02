@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -36,11 +37,19 @@ public class FinishGame : MonoBehaviour
     private void HandleWin()
     {
         Player.GetComponent<PlayerInput>().IsOnControl = false;
+
+        StartCoroutine(WinPanelAppear());
+    }
+
+    private IEnumerator WinPanelAppear()
+    {
+        yield return new WaitForSeconds(5);
+
         WinPanel.SetActive(true);
         int total = PointCounter.S.MaxPoints;
         int cur = PointCounter.S.CurrentPoints;
         int dif = total - cur;
-        MaxPoints.text = $"Total money earned: {total}\n(Save: {cur}/Spent: {dif})";
+        MaxPoints.text = $"Total money earned: {total}\n(Saved: {cur}/Spent: {dif})";
     }
 
     public void ToMenu()
