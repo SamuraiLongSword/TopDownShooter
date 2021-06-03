@@ -8,6 +8,7 @@ public class EnemyForm : MonoBehaviour
     [SerializeField] private float Scale;
     [SerializeField] private SpriteRenderer SRenderer;
     [SerializeField] private AudioSource DeathSound;
+    [SerializeField] private GameObject Overlap;
 
     public event Action OnWin = delegate { };
 
@@ -42,6 +43,7 @@ public class EnemyForm : MonoBehaviour
 
         if (gameObject.tag == "Boss") OnWin();
 
+        Overlap.SetActive(false);
         DeathSound.Play();
         _animator.SetTrigger("ShotDown");
         SRenderer.sortingOrder = 0;

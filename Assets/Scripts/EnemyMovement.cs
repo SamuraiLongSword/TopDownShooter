@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private float Speed;
+    [SerializeField] protected float Speed;
 
-    private GameObject _player;
-    private bool _isAlive;
+    protected GameObject _player;
+    protected bool _isAlive;
 
     private void Start()
     {
@@ -21,7 +21,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update() => Movement();
 
-    private void Movement()
+    public virtual void Movement()
     {
         if (_isAlive && _player != null)
         {
@@ -33,5 +33,5 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private void HandlerDie() => _isAlive = false;
+    protected void HandlerDie() => _isAlive = false;
 }
