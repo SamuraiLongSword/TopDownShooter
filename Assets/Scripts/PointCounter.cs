@@ -28,10 +28,6 @@ public class PointCounter : MonoBehaviour
             {
                 _currnetPoints = value;
             }
-            else
-            {
-                // Send message 'not enough money' or something like that
-            }
         }
     }
 

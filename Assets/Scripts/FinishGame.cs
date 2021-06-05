@@ -8,24 +8,45 @@ public class FinishGame : MonoBehaviour
     [SerializeField] private GameObject WinPanel;
     [SerializeField] private GameObject LosePanel;
     [SerializeField] private GameObject Player;
+    [SerializeField] private GameObject BossUIStuff;
+    [SerializeField] private Image BossHPImage;
 
     [SerializeField] private Text MaxPoints;
 
+    private HealthController _bossHealth;
     private GameObject _boss;
+    private PlayerInput _pInput;
 
     private void Start()
     {
+        _pInput = Player.GetComponent<PlayerInput>();
+
         Player.GetComponent<HealthController>().OnDie += HandleDie;
         _boss = null;
     }
 
     private void Update()
     {
-        _boss = GameObject.FindGameObjectWithTag("Boss");
+        BackToMenu();
+        FindBoss();
+    }
 
-        if (_boss != null)
+    private void FindBoss()
+    {
+        if(_boss == null)
         {
-            _boss.GetComponent<EnemyForm>().OnWin += HandleWin;
+            _boss = GameObject.FindGameObjectWithTag("Boss");
+
+            if (_boss != null)
+            {
+                _boss.GetComponent<EnemyForm>().OnWin += HandleWin;
+                _bossHealth = _boss.GetComponent<HealthController>();
+                BossUIStuff.SetActive(true);
+            }
+        }
+        else
+        {
+            BossHPImage.fillAmount = _bossHealth.CurrentHealth / _bossHealth.GetMaxHealth;
         }
     }
 
@@ -60,5 +81,13 @@ public class FinishGame : MonoBehaviour
     public void Replay()
     {
         SceneManager.LoadScene("_Level_Scene");
+    }
+
+    private void BackToMenu()
+    {
+        if (_pInput.M)
+        {
+            ToMenu();
+        }
     }
 }

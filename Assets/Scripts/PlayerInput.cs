@@ -8,6 +8,8 @@ public class PlayerInput : MonoBehaviour
     public bool MouseLeft { get; private set; }
     public bool R { get; private set; }
     public bool F { get; private set; }
+    public bool P { get; private set; }
+    public bool M { get; private set; }
 
     private bool _isOnControl;
     public bool IsOnControl
@@ -38,5 +40,8 @@ public class PlayerInput : MonoBehaviour
             R = Input.GetKeyDown(KeyCode.R);
             F = Input.GetKeyDown(KeyCode.F);
         }
+
+        P = Input.GetKeyDown(KeyCode.P);
+        M = Input.GetKeyDown(KeyCode.M);
     }
 }

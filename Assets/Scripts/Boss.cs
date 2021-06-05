@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Boss : EnemyMovement
 {
-
     private void Update()
     {
         Movement();

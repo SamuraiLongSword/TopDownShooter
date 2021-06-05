@@ -18,6 +18,14 @@ public class HealthController : MonoBehaviour
         }
     }
 
+    public float GetMaxHealth
+    {
+        get
+        {
+            return MaxHealth;
+        }
+    }
+
     private void Start() => _currentHealth = MaxHealth;
 
     private void TakeDamage(float damage)
