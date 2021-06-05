@@ -17,10 +17,7 @@ public class PlayerAnimation : MonoBehaviour
         _pInput = GetComponent<PlayerInput>();
     }
 
-    private void Update()
-    {
-        AnimationLogic();
-    }
+    private void Update() => AnimationLogic();
 
     private void AnimationLogic()
     {

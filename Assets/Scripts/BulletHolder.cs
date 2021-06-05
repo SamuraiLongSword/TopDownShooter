@@ -1,21 +1,24 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// Contains all the stuff about the projectiles and the clips
+/// </summary>
 public class BulletHolder : MonoBehaviour
 {
     [SerializeField] private AudioSource AudioBuyClip;
     [SerializeField] private AudioSource AudioReloadClip;
+    [SerializeField] private int PointsForBuyClip; // Points to buy a clip
+    [SerializeField] private int MaxClipAmount; // Max total clips amount
+    [SerializeField] private int currentClipAmount; // Start clips amount
+    [SerializeField] private int ClipMaxBulletCount; // The max amount of the bullets in one clip
 
-    private int _maxClipAmount; // Max total amount
-    private int _currentClipAmount; // Start amount
-    private int _pointsForBuyClip; // Points to buy a clip
-    private int _clipMaxBulletCount; // Clip amount
     private int _clipCurrentBulletCount; // Current bullets amount
-    private bool _canBuy; // If player is in the buying point
+    private bool _canBuy; // If player is in the buying area
 
     public int CurrentClipAmount
     {
-        get { return _currentClipAmount; }
+        get { return currentClipAmount; }
     }
 
     public int ClipCurrentBulletCount
@@ -37,11 +40,7 @@ public class BulletHolder : MonoBehaviour
 
     private void Awake()
     {
-        _maxClipAmount = 5;
-        _currentClipAmount = 3;
-        _pointsForBuyClip = 750;
-        _clipMaxBulletCount = 100;
-        _clipCurrentBulletCount = _clipMaxBulletCount;
+        _clipCurrentBulletCount = ClipMaxBulletCount;
         _canBuy = false;
 
         GetComponent<Spawner>().OnSpawn += HandlerSpawn;
@@ -59,6 +58,7 @@ public class BulletHolder : MonoBehaviour
 
     private void CheckOutOfBullets()
     {
+        // Can't fire if the player out of the bullets
         if (_clipCurrentBulletCount == 0)
         {
             _pLauncher.CanFire = false;
@@ -71,6 +71,7 @@ public class BulletHolder : MonoBehaviour
 
     private void HandlerSpawn()
     {
+        // Decrease bullets amount after shoot
         _clipCurrentBulletCount--;
 
         if(_clipCurrentBulletCount == 10)
@@ -81,37 +82,39 @@ public class BulletHolder : MonoBehaviour
 
     private void Recharge()
     {
-        if (_pInput.R && _currentClipAmount > 0)
+        // Recharge clip logic
+        if (_pInput.R && currentClipAmount > 0)
         {
             OnRecharged();
 
-            _clipCurrentBulletCount = _clipMaxBulletCount;
-            _currentClipAmount--;
+            _clipCurrentBulletCount = ClipMaxBulletCount;
+            currentClipAmount--;
             AudioReloadClip.Play();
 
-            if (_currentClipAmount == 0) OnOutOfClips();
+            if (currentClipAmount == 0) OnOutOfClips();
         }
     }
 
     private void BuyBullets()
     {
-        if (PointCounter.S.CurrentPoints < _pointsForBuyClip && _canBuy && _pInput.F) OnOutOfMoney();
+        if (PointCounter.S.CurrentPoints < PointsForBuyClip && _canBuy && _pInput.F) OnOutOfMoney();
 
-        if (_pInput.F && PointCounter.S.CurrentPoints >= _pointsForBuyClip && _currentClipAmount <= _maxClipAmount && _canBuy)
+        if (_pInput.F && PointCounter.S.CurrentPoints >= PointsForBuyClip && currentClipAmount <= MaxClipAmount && _canBuy)
         {
-            if(_currentClipAmount == _maxClipAmount)
+            if(currentClipAmount == MaxClipAmount)
             {
                 OnFullClip();
                 return;
             }
 
             OnBuyClip();
-            _currentClipAmount++;
-            PointCounter.S.CurrentPoints -= _pointsForBuyClip;
+            currentClipAmount++;
+            PointCounter.S.CurrentPoints -= PointsForBuyClip;
             AudioBuyClip.Play();
         }
     }
 
+    // This method is calling from the ProjectileLauncher script
     private void CanBuy()
     {
         _canBuy = !_canBuy;

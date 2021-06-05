@@ -2,6 +2,9 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Describes all the enemies stuff
+/// </summary>
 public class EnemyForm : MonoBehaviour
 {
     [SerializeField] private int PointsForKill;
@@ -29,6 +32,7 @@ public class EnemyForm : MonoBehaviour
 
     private void EnemyAnimatorController()
     {
+        // Changes enemy flipX in dependence of the moving direction
         if (transform.position.x > _previousPos.x) SRenderer.flipX = false;
         else SRenderer.flipX = true;
 
@@ -39,6 +43,7 @@ public class EnemyForm : MonoBehaviour
 
     private IEnumerator Delete()
     {
+        // Enemies deactivating and deleting logic
         PointCounter.S.MaxPoints = PointsForKill;
 
         if (gameObject.tag == "Boss") OnWin();
@@ -60,6 +65,7 @@ public class EnemyForm : MonoBehaviour
 
     private IEnumerator ChangeColor()
     {
+        // Change enemies color after hit and turns it back after established time
         Color tmp = SRenderer.color;
         SRenderer.color = Color.yellow;
 

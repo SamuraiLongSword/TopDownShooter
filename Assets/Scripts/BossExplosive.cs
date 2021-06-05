@@ -1,6 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Blows up the boss after it was killed
+/// </summary>
 public class BossExplosive : MonoBehaviour
 {
     [SerializeField] private GameObject ExplosivePrefab;

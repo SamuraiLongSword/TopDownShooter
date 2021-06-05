@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// Finish game stuff
+/// </summary>
 public class FinishGame : MonoBehaviour
 {
     [SerializeField] private GameObject WinPanel;
@@ -33,6 +36,7 @@ public class FinishGame : MonoBehaviour
 
     private void FindBoss()
     {
+        // Find the boss, subscribe OnWin event, output boss's hp
         if(_boss == null)
         {
             _boss = GameObject.FindGameObjectWithTag("Boss");
@@ -73,16 +77,19 @@ public class FinishGame : MonoBehaviour
         MaxPoints.text = $"Total money earned: {total}\n(Saved: {cur}/Spent: {dif})";
     }
 
+    // UI button
     public void ToMenu()
     {
         SceneManager.LoadScene("_Start_Scene");
     }
 
+    // UI button
     public void Replay()
     {
         SceneManager.LoadScene("_Level_Scene");
     }
 
+    // Quit to the menu from the game
     private void BackToMenu()
     {
         if (_pInput.M)

@@ -8,6 +8,7 @@ public class PointCounter : MonoBehaviour
     private int _currnetPoints;
     private int _mobCounter;
 
+    // Property for increasing player max points, current points and counting killed enemies
     public int MaxPoints
     {
         get { return _maxPoints; }
@@ -19,6 +20,7 @@ public class PointCounter : MonoBehaviour
         }
     }
 
+    // Property for reducing player points when buying a clip
     public int CurrentPoints
     {
         get { return _currnetPoints; }

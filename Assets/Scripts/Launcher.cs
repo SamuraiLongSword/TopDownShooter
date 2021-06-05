@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// The base logic of shooting, spawning enemies, spawning recharge zones, getting damage, spawning waves
+/// Pass an instance of itself to a class that implements the ILaunch interface after established time
+/// </summary>
 public class Launcher : MonoBehaviour
 {
     [SerializeField] private float LaunchRate;
@@ -26,6 +30,7 @@ public class Launcher : MonoBehaviour
         }
     }
 
+    // Reloaded method to implement player shooting
     protected void LaunchLogic(PlayerInput pInput)
     {
         _launchTimer += Time.deltaTime;        

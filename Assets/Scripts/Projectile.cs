@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Describes projectile moving and destroying
+/// </summary>
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private float ProjectileSpeed;

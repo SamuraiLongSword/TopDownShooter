@@ -2,6 +2,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Describes all of the stuff is happening in the game scene
+/// </summary>
 public class GameCanvas : MonoBehaviour
 {
     [SerializeField] private Text PlayerHP;
@@ -55,11 +58,12 @@ public class GameCanvas : MonoBehaviour
 
     private void GetParams()
     {
+        // Output player's hp, clips amount, current bullets and point
         PlayerHPImage.fillAmount = _health.CurrentHealth / _health.GetMaxHealth;
 
         PlayerHP.text = $"HP: {_health.CurrentHealth}";
         PlayerPoints.text = $": {PointCounter.S.CurrentPoints}";
-        PlayerClipsBullets.text = $"Clips / Shots : { _bullets.CurrentClipAmount} / {_bullets.ClipCurrentBulletCount}";
+        PlayerClipsBullets.text = $"      : { _bullets.CurrentClipAmount}     : {_bullets.ClipCurrentBulletCount}";
     }
 
     private void HandlerOutOfBullets()
@@ -94,6 +98,7 @@ public class GameCanvas : MonoBehaviour
 
     private IEnumerator FullClipMessage(GameObject panel)
     {
+        // Activate panel with message (full clips amount or out of money) and deactivate panel after established time
         panel.SetActive(true);
 
         yield return new WaitForSeconds(2);
@@ -103,13 +108,14 @@ public class GameCanvas : MonoBehaviour
 
     private void RotateArrowLogic()
     {
-        if(_rechargeDot == null) _rechargeDot = GameObject.FindGameObjectWithTag("RechargeDot");
+        // Find the recharging area and rotate the pointer by the direction from the player to the area
+        if (_rechargeDot == null) _rechargeDot = GameObject.FindGameObjectWithTag("RechargeDot");
 
         if(_rechargeDot != null && Player!= null)
         {
             ArrowToShow.SetActive(true);
             float angle = AngleBetweenTwoPoints(Player.transform.position, _rechargeDot.transform.position);
-            ArrowToShow.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle - 90));
+            ArrowToShow.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle - 180));
         }
         else
         {

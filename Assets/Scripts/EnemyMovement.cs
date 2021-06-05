@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Enemies movement logic
+/// </summary>
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] protected float Speed;

@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Describes Boss behaviour
+/// </summary>
 public class Boss : EnemyMovement
 {
     private void Update()
@@ -17,6 +20,7 @@ public class Boss : EnemyMovement
             }
             else
             {
+                // If the boss reached the player it teleports to the random point on the map
                 transform.position = new Vector2(Random.Range(-8f, 8f), Random.Range(-8f, 8f));
             }
         }

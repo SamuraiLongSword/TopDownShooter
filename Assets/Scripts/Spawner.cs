@@ -1,6 +1,9 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// Spawn logic of the enemies
+/// </summary>
 public class Spawner : MonoBehaviour, ILaunch
 {
     [SerializeField] private GameObject PrefabToSpawn;

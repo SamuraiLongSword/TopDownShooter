@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7635865133714060422}
   - component: {fileID: 7635865133714060423}
   - component: {fileID: 7635865133714060420}
-  - component: {fileID: 7635865133714060421}
   - component: {fileID: 7635865133714060426}
   - component: {fileID: 7635865133714060417}
   - component: {fileID: 330268896532798200}
@@ -71,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8e7360d8a58a9249af087ae873dd5e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PointsForKill: 100
+  PointsForKill: 90
   Scale: 2
   SRenderer: {fileID: 7635865133750712575}
   DeathSound: {fileID: 8414585761975561796}
@@ -89,19 +88,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 6
---- !u!114 &7635865133714060421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7635865133714060424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474698e83db3f3449ba6c9fd246af14b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Range: 2
 --- !u!114 &7635865133714060426
 MonoBehaviour:
   m_ObjectHideFlags: 0
